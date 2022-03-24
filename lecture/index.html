@@ -22,16 +22,14 @@
         }
         render() {
           return (
-            <>
-              <button
-                type="submit"
-                onClick={() => {
-                  this.setState({ liked: true });
-                }}
-              >
-                {this.state.liked ? "Liked" : "Like"}
-              </button>
-            </>
+            <button
+              type="submit"
+              onClick={() => {
+                this.setState({ liked: true });
+              }}
+            >
+              {this.state.liked ? "좋아요 누름" : "좋아요"}
+            </button>
           );
         }
       }

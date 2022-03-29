@@ -4,12 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --env development"
+    "dev": "webpack serve --env development",
+    "predev": "webpack"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },

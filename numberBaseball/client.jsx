@@ -1,6 +1,15 @@
-const React = require("react");
-const ReactDOM = require("react-dom");
+import React from "react";
+import ReactDOM from "react-dom";
 
-const NumberBaseball = require("./NumberBaseball");
+import NumberBaseball from "./NumberBaseball";
+import ResponseCheck from "./ResponseCheck";
+import RSP from "./RSP";
 
-ReactDOM.render(<NumberBaseball />, document.getElementById("root"));
+ReactDOM.render(
+  <>
+    <RSP />
+    <NumberBaseball />
+    <ResponseCheck />
+  </>,
+  document.getElementById("root")
+);

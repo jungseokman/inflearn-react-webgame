@@ -1,6 +1,7 @@
 const path = require("path");
 const RefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 module.exports = {
+  name: "wordrelay-setting",
   mode: "development",
   devtool: "eval",
   resolve: {

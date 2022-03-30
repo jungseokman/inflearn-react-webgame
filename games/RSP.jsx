@@ -1,50 +1,44 @@
 import React, { useState, useEffect, useRef } from "react";
 
+const rspCoords = {
+  바위: 0,
+  가위: "-142px",
+  보: "-284px",
+};
+
+const scores = {
+  바위: 0,
+  가위: 1,
+  보: -1,
+};
+
+const computerChoice = (imgCoord) => {
+  return Object.entries(rspCoords).find((v) => {
+    return v[1] === imgCoord;
+  })[0];
+};
+
 const RSP = () => {
   const [result, setResult] = useState("");
   const [score, setScore] = useState(0);
   const [imgCoord, setImgCoord] = useState(0);
-
   const interval = useRef();
 
-  const rspCoords = {
-    바위: 0,
-    가위: "-142px",
-    보: "-284px",
-  };
-
-  const scores = {
-    바위: 0,
-    가위: 1,
-    보: -1,
-  };
-
-  const computerChoice = (imgCoord) => {
-    console.log(
-      Object.entries(rspCoords).find((v) => {
-        console.log(v[1] === imgCoord);
-        return v[1] === imgCoord;
-      })
-    );
-    return Object.entries(rspCoords).find((v) => {
-      console.log(v[1] === imgCoord);
-      return v[1] === imgCoord;
-    })[0];
+  const changeHand = () => {
+    if (imgCoord === rspCoords.바위) {
+      setImgCoord(rspCoords.가위);
+    } else if (imgCoord === rspCoords.가위) {
+      setImgCoord(rspCoords.보);
+    } else if (imgCoord === rspCoords.보) {
+      setImgCoord(rspCoords.바위);
+    }
   };
 
   useEffect(() => {
-    interval.current = setInterval(() => {
-      if (imgCoord === rspCoords.바위) {
-        setImgCoord(rspCoords.가위);
-        clearInterval(interval.current);
-      } else if (imgCoord === rspCoords.가위) {
-        setImgCoord(rspCoords.보);
-        clearInterval(interval.current);
-      } else if (imgCoord === rspCoords.보) {
-        setImgCoord(rspCoords.바위);
-        clearInterval(interval.current);
-      }
-    }, 1000);
+    interval.current = setInterval(changeHand, 500);
+    return () => {
+      clearInterval(interval.current);
+    };
   }, [imgCoord]);
 
   const onClickBtn = (choice) => {
@@ -62,7 +56,7 @@ const RSP = () => {
       setScore((prev) => prev - 1);
     }
     setTimeout(() => {
-      setImgCoord(0);
+      imgCoord === 0 ? setImgCoord(rspCoords.가위) : setImgCoord(0);
     }, 2000);
   };
 

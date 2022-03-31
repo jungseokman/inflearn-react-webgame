@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useMemo } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useMemo,
+  useCallback,
+} from "react";
 import Ball from "./Ball";
 
 const getWinNumbers = () => {
@@ -46,13 +52,13 @@ const Lotto = () => {
     };
   }, [timeout.current]);
 
-  const onClickRedo = () => {
+  const onClickRedo = useCallback(() => {
     setWinNumbers(getWinNumbers());
     setWinBalls([]);
     setBonus(null);
     setRedo(false);
     timeout.current = [];
-  };
+  }, [winNumbers]);
 
   return (
     <>

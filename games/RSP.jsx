@@ -35,7 +35,7 @@ const RSP = () => {
   };
 
   useEffect(() => {
-    interval.current = setInterval(changeHand, 500);
+    interval.current = setInterval(changeHand, 50);
     return () => {
       clearInterval(interval.current);
     };
